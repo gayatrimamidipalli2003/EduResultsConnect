@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: whitesmoke;
+            background-image: url('stdlogin3.jpg');
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            max-width: 800px;
+            height: 400px;
+            background-color: rgba(255, 255, 255, 0.3); 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px; 
+        }
+        .left-section {
+          flex: 1;
+          background-image: url('laptop.jpg');
+          background-size: cover;
+          background-position: center;
+          height: 100%;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+      }
+        .right-section {
+            flex: 1;
+            padding: 20px;
+        }
+        .right-section h1 {
+            margin-top: 0;
+        }
+        .form{
+            align-content: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+          }
+          
+          .right-section label {
+            text-align: left;
+            margin-bottom: 5px;
+          }
+          
+          .right-section input[type="text"],
+          .right-section input[type="password"] {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: transparent;
+          }
+          .right-section input[type="submit"] {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+          
+          .right-section input[type="submit"]:hover {
+            background-color: white;
+          }
+          
+          @keyframes pulse {
+            0% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.1);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+          .pulse {
+            animation: pulse 2s infinite;
+          }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section"></div>
+        <div class="right-section">
+            <h1 align="center">Login</h1>
+            <form action="/stdlogin" method="post">
+                <label for="user">Username:</label>
+                <input type="text" id="user" name="user"><br><br>
+                <label for="pass">Password:</label>
+                <input type="password" id="pass" name="pass" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"><br><br>
+                <div id="passwordError" style="color:red;"></div>
+                <input type="submit" value="Login" class="pulse">
+            </form>
+            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+            <script>
+                const passwordInput = document.getElementById("pass");
+                const passwordError = document.getElementById("passwordError");
+                passwordInput.addEventListener("input", () => {
+                    if (!passwordInput.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+                        passwordError.textContent = "Password must be at least 8 characters, contain at least one lowercase letter, one uppercase letter, one number, and one special character";
+                    } else {
+                        passwordError.textContent = "";
+                }
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>

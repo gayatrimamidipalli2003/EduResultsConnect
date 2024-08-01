@@ -1,0 +1,97 @@
+extends layout
+
+block content
+  style.
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      margin-right: 150px; 
+    }
+
+    .logo img {
+      max-width: 100%; 
+      max-height: 90px; 
+    }
+
+    h1 {
+      font-size: 50px;
+      font-family: serif;
+      margin-top: 5px; 
+    }
+    .menu {
+      font-size: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f2f2f2;
+      box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .menu a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: darkblue;
+      display: block; 
+      padding: 5px; 
+    }
+
+    .menu a:hover {
+      color: #0099cc;
+      animation: shake 0.5s; 
+    }
+
+    .main-content {
+      height: 520px;
+      background-image: url('galaxy.jpeg');
+      background-size: cover;
+      background-position: center;
+      color: white; 
+      text-align: center;
+      padding: 50px; 
+    }
+    
+    h2{
+      font-size: 45px;
+    }
+    
+    .nav a {
+      color: white;
+      font-size: 20px;
+      display: block;
+      margin-bottom: 10px;
+      list-style-type: disc; 
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+  .header
+    .logo-container
+      .logo
+        img(src="logo.png" alt="Logo")
+      h1 ADITYA EDUCATIONAL INSTITUTIONS
+    .menu
+      a(href="index.html" target="_self") Home
+      a(href="signup.html" target="_self") Sign up
+      a(href="adminlogin.html" target="_self") Admin Login
+      a(href="stdlogin.html" target="_self") Student Login
+      a(href="notifications.html" target="_self") Notifications
+      a(href="materials.html" target="_self") Materials
+      a(href="syllabus.html" target="_self") Syllabus
+      a(href="about.html" target="_self") About us
+      a(href="queries.html" target="_self") For more queries
+      a(href="help.html" target="_self") Help
+
+  .update
+    marquee(behavior="scroll" direction="left" scrollamount="10") Important Update: 2-2 Results are released...!!!
+
+  .main-content
+    .content-wrapper
+      h2 Welcome, #{user.fname} #{user.lname}
+      p Username: #{user.user}
+      .nav
+        a(href=`/viewprofile/${user.user}`, target='_self') View Profile
+        a(href=`/viewresults/${user.user}`, target='_self') View Marks
+        a(href=`/index.html`, target='_self') Log out

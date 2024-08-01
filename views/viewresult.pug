@@ -1,0 +1,205 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title
+    style.
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: URW Chancery L, cursive;
+        background: linear-gradient(45deg, red, violet, orange, cyan);
+        background-size: 300% 300%;
+        animation: color 12s ease-in-out infinite;
+      }
+      @keyframes color{
+        0%{
+          background-position: 0 50%;
+        }
+        50%{
+          background-position: 100% 50%;
+        }
+        100%{
+          background-position: 0 50%;
+        }
+      }
+      header {
+        text-align: center;
+        padding: 20px 0;
+        color: white;
+      }
+      .button-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .button-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        font-size: 16px;
+        cursor: pointer;
+        animation: pulse 1s infinite alternate; /* Animation effect */
+      }
+      @keyframes pulse {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.1);
+        }
+      }
+      button:hover {
+        background-color: #ddd;
+        animation: none; /* Stop animation on hover */
+      }
+      #results {
+        display: none;
+        margin: 20px auto; /* Center the results div horizontally */
+        max-width: 500px; /* Set a max-width for better responsiveness */
+        border-radius: 8px;
+      }
+      #results table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 2px solid transparent; /* Add a solid border */
+      }
+      #results th, #results td {
+        border: 2px solid black; /* Add a solid border */
+        padding: 2px;
+        text-align: center; /* Center align text */
+      }
+      #results th {
+        background-color: #333; /* Dark background for table header */
+        color: white;
+      }
+      .results-container {
+        text-align: center;
+      }
+      h6 {
+        font-size: 20px;
+        font-family: URW Chancery L, cursive;
+      }
+      #filteredResults {
+        display: none;
+        margin: 20px auto; /* Center the filtered results div horizontally */
+        max-width: 500px; /* Set a max-width for better responsiveness */
+        border-radius: 8px;
+      }
+  body
+    header
+      h1 Check your results here #{user} <!-- Centered heading -->
+    .button-container
+      .button-wrapper
+        button(id="showResultsBtn") Show Results <!-- Buttons in a div -->
+        form#filterForm
+          label
+            input(type="radio" name="status" value="pass" checked)
+            | Pass
+          label
+            input(type="radio" name="status" value="fail")
+            | Fail
+          input(type="submit" value="Filter")
+    #results <!-- Hidden by default -->
+      h6 Results <!-- Centered h6 -->
+      .results-container
+        table
+          tr
+            th M1
+            th Eng
+            th PPSC
+            th AP 
+            th ELCS_LAB
+          tr
+            td #{marks.M1}
+            td #{marks.Eng} 
+            td #{marks.PPSC} 
+            td #{marks.AP} 
+            td #{marks.ELCS_LAB}
+          tr
+            td #{M1Grade}
+            td #{EngGrade}
+            td #{PPSCGrade}
+            td #{APGrade}
+            td #{ELCS_LABGrade}
+        br
+        table
+          tr
+            th M2 
+            th DS 
+            th PYTHON 
+            th CO 
+            th CHEM
+          tr
+            td #{onetwo.M2} 
+            td #{onetwo.DS} 
+            td #{onetwo.PYTHON} 
+            td #{onetwo.CO} 
+            td #{onetwo.CHEM}
+          tr
+            td #{M2Grade}
+            td #{DSGrade}
+            td #{PYTHONGrade}
+            td #{COGrade}
+            td #{CHEMGrade}
+    #filteredResults <!-- Hidden by default -->
+      h6 Filtered Results <!-- Centered h6 -->
+      .results-container
+        // Filtered results will be displayed here dynamically
+  // Script to handle form submission and display data
+  script.
+    var passedsubj1 = !{JSON.stringify(passedsubj1)};
+    var failedsubj1 = !{JSON.stringify(failedsubj1)};
+    var passedsubj2 = !{JSON.stringify(passedsubj2)};
+    var failedsubj2 = !{JSON.stringify(failedsubj2)};
+    
+    document.getElementById('filterForm').onsubmit = function() {
+      var statusValue = document.querySelector('input[name="status"]:checked').value;
+      if(statusValue === "pass") {
+        var passedSubjectsTable = "<table><tr><th>Passed Subjects 1-1</th></tr>";
+        passedsubj1.forEach(function(subject) {
+          passedSubjectsTable += "<tr class='passed'>" +
+                                 "<td>" + subject + "</td>" +
+                                 "</tr>";
+        });
+        passedSubjectsTable += "<tr><th>Passed Subjects 1-2</th></tr>";
+        passedsubj2.forEach(function(subject) {
+          passedSubjectsTable += "<tr class='passed'>" +
+                                 "<td>" + subject + "</td>" +
+                                 "</tr>";
+        });
+        passedSubjectsTable += "</table>";
+        // Display the table inside the filteredResults div
+        document.getElementById('filteredResults').innerHTML = passedSubjectsTable;
+        // Show the filtered results
+        document.getElementById('filteredResults').style.display = 'block';
+      }
+   
+      if(statusValue === "fail") {
+        var failedSubjectsTable = "<table><tr><th>Failed Subjects 1-1</th></tr>";
+        failedsubj1.forEach(function(subject) {
+          failedSubjectsTable += "<tr class='failed'>" +
+                                 "<td>" + subject + "</td>" +
+                                 "</tr>";
+        });
+        failedSubjectsTable += "<tr><th>Failed Subjects 1-2</th></tr>";
+        failedsubj2.forEach(function(subject) {
+          failedSubjectsTable += "<tr class='failed'>" +
+                                 "<td>" + subject + "</td>" +
+                                 "</tr>";
+        });
+        failedSubjectsTable += "</table>";
+        // Display the table inside the filteredResults div
+        document.getElementById('filteredResults').innerHTML = failedSubjectsTable;
+        // Show the filtered results
+        document.getElementById('filteredResults').style.display = 'block';
+      }
+      return false; // Prevent form submission
+    };
+    document.getElementById('showResultsBtn').addEventListener('click', function() {
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.style.display = 'block';
+    });

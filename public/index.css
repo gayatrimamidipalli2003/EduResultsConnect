@@ -1,0 +1,87 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 110px; /* Add some space between the logo and the h1 */
+}
+
+.logo img {
+  max-width: 100%; /* Ensure the logo image does not exceed its container's width */
+  max-height: 90px; /* Set a maximum height for the logo */
+}
+
+h1 {
+  font-size: 50px;
+  font-family: serif;
+  text-align: center; /* Center the heading */
+  margin-top: 5px; /* Add space between heading and menu */
+}
+
+.menu {
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+  box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.menu a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #00698f;
+}
+.menu a:hover {
+  color: #0099cc;
+}
+
+.update{
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+ } 
+
+.main-content {
+    /* Styles for the main content section */
+    background-image: linear-gradient(to bottom, rgba(0, 153, 204, 0.6), rgba(0, 153, 204, 0.2)), url('banner.png');/* Add a translucent blue shade to the background image */
+    background-size: cover; /* Cover the entire main content section with the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-attachment: fixed; /* Fix the background image so it doesn't scroll with the content */
+    height: 78vh;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.content-wrapper {
+    text-align: center; /* Center-align text */
+    color: white;
+    font-size: 30px;
+    font-family: serif;
+}
+
+.content-wrapper h1,
+.content-wrapper p,
+.content-wrapper button {
+    margin: 10px 0; /* Add margin between elements */
+}
+
+
+ .contact-us {
+  display: inline-block;
+  margin-top: 30px; /* Add some space below the main content */
+  padding: 10px 20px;
+  background-color: #0099cc;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; /* Add rounded corners to the button */
+  transition: background-color 0.3s; /* Add a smooth transition effect for the button */
+}
+
+.contact-us:hover {
+  background-color: #00698f; /* Change the button color when hovered */
+}

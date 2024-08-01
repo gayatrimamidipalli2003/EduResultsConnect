@@ -1,0 +1,6 @@
+npm init
+npm install express
+npm install pug
+npm install express-fileupload
+npm install mongoose
+npm install express-session

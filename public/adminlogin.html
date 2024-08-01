@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body {
+            background-image: url('admin1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .transparent-div {
+            width: 300px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="transparent-div">
+        <h1>Admin Login</h1>
+        <form action="/adminlogin" method="post">
+            <label for="adminuser">Admin Username:</label>
+            <input type="text" id="adminuser" name="adminuser"><br><br>
+            <label for="adminpass">Admin Password:</label>
+            <input type="password" id="adminpass" name="adminpass"><br><br>
+            <input type="submit" value="Login">
+            <p>Forgot Password? <a href="forgot.html">Update Password</a></p>
+        </form>
+    </div>
+</body>
+</html>
