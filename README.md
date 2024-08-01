@@ -1,0 +1,2 @@
+# EduResultsConnect
+The project "EduResultsConnect" is a college website that is designed to provide students with quick access to their profiles and exam results. Students must first register and log in to view their biographies and recent updates. An admin user can also log in to access and manage all student profiles by clicking on their IDs to view detailed information. This web application is built on the MEAN stack, utilizing MongoDB for data storage and employing HTML, CSS, and JavaScript for a dynamic and interactive user experience.
